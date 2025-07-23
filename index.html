@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JobPortal Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .transition-all {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bd9e820c-c368-45c0-97c3-4c5983c3eefc.png" alt="JobPortal Pro logo showing a briefcase with a blue gradient background" class="rounded-full">
+                <span class="text-xl font-bold">JobPortal Pro</span>
+            </div>
+            <div class="flex items-center space-x-6">
+                <a href="#" class="hover:underline">Jobs</a>
+                <a href="#" class="hover:underline">Applications</a>
+                <a href="#" class="hover:underline">Employers</a>
+                <div class="relative" id="userDropdown">
+                    <button class="flex items-center space-x-1">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2e24f2f2-368b-4c9e-a81c-3b9372ded106.png" alt="User profile picture showing a generic person silhouette" class="rounded-full">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div class="hidden absolute right-0 mt-2 py-2 w-48 bg-white rounded-md shadow-lg" id="dropdownMenu">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Launch Your Career Journey Today</h1>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Join thousands of employers and applicants in our growing community</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <button class="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-all">Post a Job</button>
+                <button class="bg-transparent border-2 border-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-purple-700 transition-all">Browse Jobs</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <!-- Search and Filter Section -->
+        <div class="bg-white rounded-xl shadow-md p-6 mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                <div class="flex-1">
+                    <div class="relative">
+                        <input type="text" placeholder="Search for jobs..." class="w-full pl-10 pr-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <i class="fas fa-search absolute left-3 top-3.5 text-gray-400"></i>
+                    </div>
+                </div>
+                <div class="flex gap-4">
+                    <select class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option>All Categories</option>
+                        <option>Technology</option>
+                        <option>Finance</option>
+                        <option>Healthcare</option>
+                        <option>Marketing</option>
+                        <option>Engineering</option>
+                        <option>Education</option>
+                    </select>
+                    <select class="border rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option>All Locations</option>
+                        <option>Remote</option>
+                        <option>New York</option>
+                        <option>San Francisco</option>
+                    </select>
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all">Search</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Job Listings -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Latest Job Openings</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Job Card 1 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ca10202d-cae8-41b4-abb8-daddfb01f511.png" alt="Tech Innovators company logo with blue background" class="rounded-lg">
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Full-time</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Senior Frontend Developer</h3>
+                    <p class="text-gray-600 mb-4">Tech Innovators Inc.</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">React</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">TypeScript</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Redux</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700"><i class="fas fa-map-marker-alt mr-1"></i> San Francisco, CA</span>
+                        <button class="text-purple-600 font-semibold hover:underline">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6179bd8f-1610-408e-a8e0-97c59fbb5205.png" alt="Company logo for Financial Solutions Ltd showing a golden coin with a dollar sign" class="rounded-lg">
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Contract</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Financial Analyst</h3>
+                    <p class="text-gray-600 mb-4">Financial Solutions Ltd</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Excel</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">SQL</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">FP&A</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700"><i class="fas fa-map-marker-alt mr-1"></i> New York, NY</span>
+                        <button class="text-purple-600 font-semibold hover:underline">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="job-card bg-white rounded-xl shadow-md p-6 transition-all">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/de011824-9f42-40b7-8d16-9cc61bb37fdf.png" alt="Company logo for HealthCare Partners showing a green medical cross symbol" class="rounded-lg">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Part-time</span>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Registered Nurse</h3>
+                    <p class="text-gray-600 mb-4">HealthCare Partners</p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">BSN</span>
+                        <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Critical Care</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-gray-700"><i class="fas fa-map-marker-alt mr-1"></i> Chicago, IL</span>
+                        <button class="text-purple-600 font-semibold hover:underline">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- For Employers Section -->
+        <div class="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl shadow-md p-8 mb-12">
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/26517958-cdbe-487a-9210-c3797654e05d.png" alt="Illustration showing employers reviewing applications on a dashboard with graphs and charts" class="rounded-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-2xl font-bold mb-4">For Employers</h2>
+                    <p class="text-gray-700 mb-6">Find the perfect candidate for your organization. Our platform connects you with qualified professionals looking for their next opportunity.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Post unlimited job listings</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Receive applications directly</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            <span>Advanced candidate filtering</span>
+                        </li>
+                    </ul>
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all">Post a Job Now</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Application Status Section -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Your Applications</h2>
+            <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Job Title</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Company</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Applied On</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium">Senior Frontend Developer</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">Tech Innovators Inc.</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">May 15, 2023</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-sm bg-blue-100 text-blue-800 rounded">Under Review</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium">UX Designer</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">Digital Creations</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">April 28, 2023</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-sm bg-yellow-100 text-yellow-800 rounded">Interview Scheduled</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="font-medium">Data Scientist</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">Analytics Corp</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="text-gray-600">April 10, 2023</div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <span class="px-2 py-1 text-sm bg-red-100 text-red-800 rounded">Rejected</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">JobPortal Pro</h3>
+                    <p class="text-gray-400">Connecting talent with opportunity since 2023.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">For Applicants</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Browse Jobs</a></li>
+                        <li><a href="#" class="hover:text-white">Create Profile</a></li>
+                        <li><a href="#" class="hover:text-white">Application Tips</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">For Employers</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Post a Job</a></li>
+                        <li><a href="#" class="hover:text-white">Browse Candidates</a></li>
+                        <li><a href="#" class="hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Contact Us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><i class="fas fa-envelope mr-2"></i> contact@jobportalpro.com</li>
+                        <li><i class="fas fa-phone mr-2"></i> (123) 456-7890</li>
+                        <li><i class="fas fa-map-marker-alt mr-2"></i> 123 Job Street, NY</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2023 JobPortal Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Job Details Modal -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden" id="jobModal">
+        <div class="bg-white rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-2xl font-bold">Senior Frontend Developer</h3>
+                        <p class="text-gray-600">Tech Innovators Inc.</p>
+                    </div>
+                    <button class="text-gray-400 hover:text-gray-600" id="closeModal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="flex flex-col md:flex-row justify-between gap-6 mb-6">
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-briefcase mr-2 text-purple-600"></i>
+                            <span>Full-time</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>
+                            <span>San Francisco, CA</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex items-center">
+                            <i class="fas fa-dollar-sign mr-2 text-purple-600"></i>
+                            <span>$100,000 - $130,000/year</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-clock mr-2 text-purple-600"></i>
+                            <span>Posted 2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-100 p-4 rounded-lg mb-6">
+                    <h4 class="font-semibold mb-2">Skills Required:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">React</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">TypeScript</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">Redux</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">HTML/CSS</span>
+                        <span class="bg-gray-200 text-gray-800 text-sm px-2 py-1 rounded">REST API</span>
+                    </div>
+                </div>
+                
+                <div class="prose max-w-none mb-8">
+                    <h4>Job Description</h4>
+                    <p>We're looking for a Senior Frontend Developer to join our growing team. You'll be responsible for building and maintaining our web applications and collaborating with our design and backend teams to deliver exceptional user experiences.</p>
+                    
+                    <h4>Responsibilities</h4>
+                    <ul>
+                        <li>Develop new user-facing features using React</li>
+                        <li>Build reusable components and front-end libraries</li>
+                        <li>Optimize applications for maximum performance</li>
+                        <li>Collaborate with other team members and stakeholders</li>
+                    </ul>
+                    
+                    <h4>Requirements</h4>
+                    <ul>
+                        <li>5+ years of frontend development experience</li>
+                        <li>Strong proficiency in JavaScript, including DOM manipulation</li>
+                        <li>Thorough understanding of React.js and its core principles</li>
+                        <li>Experience with popular React workflows (Redux, Context API)</li>
+                    </ul>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition-all flex-1">Apply Now</button>
+                    <button class="bg-white border border-purple-600 text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-all flex-1">Save Job</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle user dropdown
+        document.getElementById('userDropdown').addEventListener('click', function() {
+            document.getElementById('dropdownMenu').classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('#userDropdown')) {
+                document.getElementById('dropdownMenu').classList.add('hidden');
+            }
+        });
+
+        // Job modal functionality
+        const viewButtons = document.querySelectorAll('.job-card button');
+        const modal = document.getElementById('jobModal');
+        const closeModal = document.getElementById('closeModal');
+
+        viewButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                modal.classList.remove('hidden');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            modal.classList.add('hidden');
+        });
+
+        // Close modal when clicking outside of it
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
